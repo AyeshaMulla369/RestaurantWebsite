@@ -7,21 +7,16 @@ function GalleryRes() {
 
   useEffect(()=>{
     AOS.init({
-      // Global settings:
-      debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-      once: false, // whether animation should happen only once - while scrolling down
-      mirror: true, // whether elements should animate out while scrolling past them
-    
+      once:'true',
     });
   },[]);
 
   return (
     <div className='gallerysection' id="galleryid">
         <div className='gallery_images'>
-            <img src='images\res1.png' alt='Img1' className='img1' data-aos="slide-left" data-aos-duration="14000"/>
-            <img src='images\res2.png' alt='Img2'className='img2' data-aos="slide-right" data-aos-duration="14000"/>
-            <img src='images\res3.png' alt='Img3'className='img3' data-aos="slide-left" data-aos-duration="14000"/>
+            <img src='images\res1.png' alt='Img1' className='img1' data-aos="slide-left" data-aos-duration="14000" data-aos-once='true' />
+            <img src='images\res2.png' alt='Img2'className='img2' data-aos="slide-right" data-aos-duration="14000" data-aos-once='true' />
+            <img src='images\res3.png' alt='Img3'className='img3' data-aos="slide-left" data-aos-duration="14000" data-aos-once='true' />
         </div>
         <div className='gallery_text'>
             <p>
