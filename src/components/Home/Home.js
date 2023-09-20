@@ -1,17 +1,17 @@
-import React from 'react';
-import HeroSection from './HeroSection';
-import Footer from './Footer';
-import Gallery from './GalleryRes';
-import Menu from './Menu';
+import React ,{lazy, Suspense } from 'react';
+const Hero = lazy(() => import('./HeroSection'));
+const Gal = lazy(() => import('./GalleryRes'));
+const Men = lazy(() => import('./Menu'));
+const Foot = lazy(() => import('./Footer'));
 
 function Home() {
 
   return (
     <>
-      <HeroSection />
-      <Gallery/>
-      <Menu/>
-      <Footer/>
+      <Suspense><Hero/></Suspense>
+      <Suspense><Gal/></Suspense>
+      <Suspense><Men/></Suspense>
+      <Suspense><Foot/></Suspense>
     </>
     
   );

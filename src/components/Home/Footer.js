@@ -9,7 +9,9 @@ function Footer() {
   const [mail, setMail] = useState('');
 
   const checkClick = () =>{
-    if(mail === '')
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+    if(!emailRegex.test(mail))
     {
       setClicked(false);
     }
@@ -18,8 +20,26 @@ function Footer() {
 
   const handleSubmit = event =>{
     event.preventDefault();
-    console.log('Mail', mail);
-    setMail('');
+    const mailer = mail;
+    const res = fetch(
+      'https://restaurant-18d8d-default-rtdb.firebaseio.com/userSubscription.json',
+      {
+        method : "POST",
+        headers:{
+          "Content-Type" : "application/json",
+        },
+        body: JSON.stringify({
+          mailer
+        })
+    }
+    );
+
+    if(res){
+      setMail('');
+    }
+    else{
+      setClicked(false)
+    }
   }
   
 

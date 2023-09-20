@@ -10,6 +10,7 @@ function CardItem(props) {
             <img
               className='cards__item__img'
               alt='Food'
+              loading='lazy'
               src={props.src}
             />
           </figure>

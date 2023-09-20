@@ -20,15 +20,39 @@ function Reserve() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    setFormData({
-      name: '',
-      date: '',
-      time: '',
-      guests: 1,
-    });
-    alert('Thank you for your reservation!');
+    const {name , date , time ,guests} = formData;
+    const res = fetch(
+      'https://restaurant-18d8d-default-rtdb.firebaseio.com/userReserve.json',
+      {
+        method : "POST",
+        headers:{
+          "Content-Type" : "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          date,
+          time, 
+          guests
+        })
+    }
+    );
+
+
+    if(res){
+      setFormData({
+        name: '',
+        date: '',
+        time: '',
+        guests: 1,
+      });
+      alert('Thank you for your reservation!');
+    }
+    else {
+      alert("Data not filled check again");
+    }
+
   };
 
 
@@ -36,14 +60,25 @@ function Reserve() {
     <div className='reserveForm'>
       <h1>Reservation Booking</h1><br/>
       <p>Book a seat in the resturant nearby and have fun</p><br/>
-      <form onSubmit = {handleSubmit}>
+      <form method='POST' onSubmit = {handleSubmit}>
         <TextField 
           color='primary' 
           type='text'
           name='name'
           value={formData.name}
-          placeholder='No. of customers' 
+          placeholder='Name of customers' 
           onChange={handleChange}   
+          required>
+        </TextField><br/><br/>
+
+
+
+        <TextField 
+          type="date" 
+          name='date'
+          value={formData.date}
+          onChange={handleChange}
+          InputProps={{inputProps: { min : new Date().toISOString().split('T')[0], }}}
           required>
         </TextField><br/><br/>
 
@@ -67,16 +102,6 @@ function Reserve() {
           inputProps={{ min: 1 }}
           required
         /><br/><br/>
-
-
-        <TextField 
-          type="date" 
-          name='date'
-          value={formData.date}
-          onChange={handleChange}
-          InputProps={{inputProps: { min : new Date().toISOString().split('T')[0], }}}
-          required>
-        </TextField><br/><br/>
 
         <Button variant='contained' type='submit' color='primary'>
           Submit
