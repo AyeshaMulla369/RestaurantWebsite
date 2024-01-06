@@ -16,7 +16,7 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <HashLink smooth to='/#homew' className='navbar-logo' onClick={closeMobileMenu}>
-            BiSTRO F00d
+            C4GE KiTCHeN
             <i class="fas fa-hamburger"></i>
           </HashLink>
           <div className='menu-icon' onClick={handleClick}>
