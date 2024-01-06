@@ -84,7 +84,7 @@ function Footer() {
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>Contact Us</h2>
-            <p>bistr0f00d@gmail.com</p>
+            <p>cagekitchen@gmail.com</p>
             <p>+91 8003717845</p>
             <p>+0831 9078</p>
           </div>
@@ -99,7 +99,7 @@ function Footer() {
         <div class='social-media-wrap'>
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
-              BiSTR0 F00d
+              C4GE KiTCHeN
               <i class="fas fa-hamburger"></i>
             </Link>
           </div>
